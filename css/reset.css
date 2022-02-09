@@ -1,0 +1,11 @@
+/* RESET ALL ELEMENTS */
+body,header,h1,h2,h4,main,form,
+label,input,div{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(14, 14, 14);
+}
