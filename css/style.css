@@ -1,0 +1,138 @@
+/* ROOTS CSS */
+:root{
+    font-size: 8px;
+    font-family: sans-serif;
+    --primart-color:#3A504B;
+    --second-color: #0EF6BE;
+    --third-color:#1E2528;
+}
+/* ROOTS CSS */
+
+
+/* HEADER */
+header{
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--third-color);
+}
+header h1{
+    color: #fff;
+    font-size: 3rem;
+}
+header h4{
+    color: #fff;
+    font-size: 1.5rem;
+}
+/* HEADER */
+
+/* MAIN */
+main{
+    margin-top: 10px;
+    height: 92vh;
+    display: flex;
+}
+/* form */
+.container {
+    background-image: url(../img/pexels-fauxels-3184306.jpg);
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.85;
+    background-position-x: -10px;
+    width: 50%;
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    box-shadow: 10px 15px 20px var(--second-color);
+}
+form{
+    background-color: rgba(0, 0, 0, 0.842);
+    width: 450px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+form label{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+}
+form input{
+    outline: none;
+    border: none;
+    border-bottom: 2px solid aqua;
+    background-color: transparent;
+    padding: 6px 0px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+form input[type = "submit"]{
+    border-radius: 12px;
+    padding: 8px;
+    border: transparent;
+    background-image: linear-gradient(180deg,var(--second-color),var(--primart-color));
+    color: #000;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+form input[type = "submit"]:hover{
+    cursor: pointer;
+    background-image: linear-gradient(360deg,var(--second-color),var(--primart-color));
+}   
+/* form */
+/* Card */
+.employersCard{
+    margin: auto;
+    width: 40%;
+    padding: 20px;
+    height: 500px;
+    background-color: var(--second-color);
+    overflow: hidden;
+    overflow-y: scroll;
+    border-radius: 12px;
+}
+h2{
+    font-size: 3.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+.employersCard::-webkit-scrollbar{
+    background-color: var(--second-color);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    width: 15px;
+}
+.employersCard::-webkit-scrollbar-thumb{
+    background-color: var(--primart-color);
+    width: 100px;
+    border-radius: 12px;
+}
+
+.card{
+    background-color: var(--third-color);
+    width: 90%;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-weight: bold;
+    box-shadow: 10px 6px 20px var(--primart-color);
+    margin-bottom: 15px;
+}
+.card p {
+    font-size: 2rem;
+    color: #fff;
+}
+.card span {
+    font-size: 2rem;
+    color: #fff;
+    
+}
+/* Card */
+/* MAIN */

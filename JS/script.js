@@ -87,9 +87,10 @@ class Usuario {
     }
 }
 
-
+const container = document.querySelector('.employersCard')
 function card(user) {
     const div = document.createElement('div');
+    div.classList.add('card')
     const { nome, nascimento, cpf, telefone, celular, pis, estuda } = user;
 
     const paragraphName = document.createElement('p');
@@ -100,12 +101,12 @@ function card(user) {
     const paragraphPIS = document.createElement('p')
     const spanStudent = document.createElement('span');
 
-    paragraphName.innerText = nome;
-    paragraphbirth.innerText = nascimento
-    paragraphCPF.innerText = cpf;
-    paragraphPhone.innerText = telefone;
-    paragraphCell.innerText = celular;
-    paragraphPIS.innerText = pis;
+    paragraphName.innerText = `Nome do funcionário: ${nome}`;
+    paragraphbirth.innerText = `Data de nascimento: ${nascimento}`
+    paragraphCPF.innerText = `CPF: ${cpf}`;
+    paragraphPhone.innerText = `Numero do telefone: ${telefone}`;
+    paragraphCell.innerText = `Numero do celular: ${celular}`;
+    paragraphPIS.innerText = `PIS: ${pis}`;
     spanStudent.innerText = estuda;
 
     div.appendChild(paragraphName);
@@ -116,7 +117,7 @@ function card(user) {
     div.appendChild(paragraphPIS)
     div.appendChild(spanStudent);
 
-    main.appendChild(div)
+    container.appendChild(div)
 }
 
 function createUser() {
