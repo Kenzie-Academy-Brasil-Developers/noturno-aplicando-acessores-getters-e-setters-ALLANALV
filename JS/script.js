@@ -1,5 +1,3 @@
-const main = document.querySelector('main');
-
 const inputName = document.getElementById('name');
 const inputDate = document.getElementById('birthDate');
 const inputCPF = document.getElementById('cpf');
