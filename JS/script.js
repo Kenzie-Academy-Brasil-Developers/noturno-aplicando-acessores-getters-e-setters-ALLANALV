@@ -11,9 +11,9 @@ const inputCheck = document.getElementById('studies');
 const button = document.getElementById('btnSubmit');
 
 class Usuario {
-    constructor(nome, nascimento, CPF, telefone, celular, PIS, estuda) {
+    constructor(nome, CPF, telefone, celular, PIS, estuda) {
         this.nome = nome;
-        this.nascimento = nascimento;
+        this.nascimento = inputDate.value;
         this.cpf = CPF;
         this.telefone = telefone;
         this.celular = celular;
@@ -111,7 +111,7 @@ function createParagraph(element, text) {
 }
 
 function createUser() {
-    const valores = [inputName.value, inputDate.value, inputCPF.value, inputPhone.value, inputCell.value, inputPIS.value, inputCheck.checked]
+    const valores = [inputName.value, inputCPF.value, inputPhone.value, inputCell.value, inputPIS.value, inputCheck.checked]
     const user = new Usuario(...valores);
 
     return user
