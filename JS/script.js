@@ -1,3 +1,5 @@
+const container = document.querySelector('.employersCard');
+
 const inputName = document.getElementById('name');
 const inputDate = document.getElementById('birthDate');
 const inputCPF = document.getElementById('cpf');
@@ -10,13 +12,13 @@ const button = document.getElementById('btnSubmit');
 
 class Usuario {
     constructor(nome, nascimento, CPF, telefone, celular, PIS, estuda) {
-        this._nome = nome;
+        this.nome = nome;
         this.nascimento = nascimento;
-        this._cpf = CPF;
-        this._telefone = telefone;
-        this._celular = celular;
-        this._PIS = PIS
-        this._estuda = estuda
+        this.cpf = CPF;
+        this.telefone = telefone;
+        this.celular = celular;
+        this.pis = PIS
+        this.estuda = estuda
     }
 
     get nome() {
@@ -85,48 +87,32 @@ class Usuario {
     }
 }
 
-const container = document.querySelector('.employersCard')
 function card(user) {
     const div = document.createElement('div');
     div.classList.add('card')
     const { nome, nascimento, cpf, telefone, celular, pis, estuda } = user;
 
-    const paragraphName = document.createElement('p');
-    const paragraphbirth = document.createElement('p')
-    const paragraphCPF = document.createElement('p');
-    const paragraphPhone = document.createElement('p');
-    const paragraphCell = document.createElement('p');
-    const paragraphPIS = document.createElement('p')
-    const spanStudent = document.createElement('span');
-
-    paragraphName.innerText = `Nome do funcionário: ${nome}`;
-    paragraphbirth.innerText = `Data de nascimento: ${nascimento}`
-    paragraphCPF.innerText = `CPF: ${cpf}`;
-    paragraphPhone.innerText = `Numero do telefone: ${telefone}`;
-    paragraphCell.innerText = `Numero do celular: ${celular}`;
-    paragraphPIS.innerText = `PIS: ${pis}`;
-    spanStudent.innerText = estuda;
-
-    div.appendChild(paragraphName);
-    div.appendChild(paragraphbirth)
-    div.appendChild(paragraphCPF);
-    div.appendChild(paragraphPhone);
-    div.appendChild(paragraphCell);
-    div.appendChild(paragraphPIS)
-    div.appendChild(spanStudent);
+    createParagraph(div, `Nome do funcionário: ${nome}`);
+    createParagraph(div, `Data de nascimento: ${nascimento}`);
+    createParagraph(div, `CPF: ${cpf}`);
+    createParagraph(div, `Numero do telefone: ${telefone}`);
+    createParagraph(div, `Numero do celular: ${celular}`);
+    createParagraph(div, `PIS: ${pis}`);
+    createParagraph(div, estuda)
 
     container.appendChild(div)
 }
 
-function createUser() {
-    const user = new Usuario(null, inputDate.value, null, null, null, null, null);
+function createParagraph(element, text) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = text;
 
-    user.nome = inputName.value
-    user.cpf = inputCPF.value
-    user.telefone = inputPhone.value
-    user.celular = inputCell.value
-    user.pis = inputPIS.value
-    user.estuda = inputCheck.checked
+    element.appendChild(paragraph)
+}
+
+function createUser() {
+    const valores = [inputName.value, inputDate.value, inputCPF.value, inputPhone.value, inputCell.value, inputPIS.value, inputCheck.checked]
+    const user = new Usuario(...valores);
 
     return user
 }
