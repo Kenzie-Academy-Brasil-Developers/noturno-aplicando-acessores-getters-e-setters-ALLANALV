@@ -11,9 +11,9 @@ const inputCheck = document.getElementById('studies');
 const button = document.getElementById('btnSubmit');
 
 class Usuario {
-    constructor(nome, CPF, telefone, celular, PIS, estuda) {
+    constructor(nome, nascimento, CPF, telefone, celular, PIS, estuda) {
         this.nome = nome;
-        this.nascimento = inputDate.value;
+        this.nascimento = nascimento;
         this.cpf = CPF;
         this.telefone = telefone;
         this.celular = celular;
@@ -25,54 +25,99 @@ class Usuario {
         return this._nome
     }
     set nome(newName) {
-        const arrName = newName.split(' ');
+        const formatName = newName.split(' ');
         const fullName = []
-        arrName.forEach((value) => {
+        formatName.forEach((value) => {
             const firstLetter = value.slice(0, 1).toUpperCase();
             const rest = value.slice(1).toLowerCase();
             fullName.push(firstLetter + rest)
         });
+
         this._nome = fullName.join(' ')
     }
 
+    get nascimento() {
+        const format = this._nascimento.split('-');
+        format.reverse()
+
+        return format.join('/')
+    }
+    set nascimento(newValue) {
+        this._nascimento = newValue
+    }
+
     get cpf() {
-        return inputCPF.value
+        const format = this._cpf.split('');
+        format.forEach((value, index) => {
+            if (index === 3 || index === 7) {
+                format.splice(index, 0, '.')
+            }
+        });
+        format.forEach((value, index) => {
+            if (index === 11) {
+                format.splice(index, 0, '-')
+            }
+        })
+
+        return format.join('')
     }
     set cpf(newCPF) {
-        const arr = newCPF.split('');
-        const filterNumbers = arr.filter((value) => value == Number(value));
+        const format = newCPF.split('');
+        const filterNumbers = format.filter((value) => value == Number(value));
 
         this._cpf = filterNumbers.join('')
     }
 
     get telefone() {
-        return inputPhone.value
+        const format = this._telefone.split('');
+        format.unshift('(');
+        format.forEach((value, index) => {
+            if (index === 3) {
+                format.splice(index, 0, ') ')
+            }
+            if (index === 8) {
+                format.splice(index, 0, '-')
+            }
+        })
+
+        return format.join('')
     }
     set telefone(NewPhone) {
-        const arr = NewPhone.split('');
-        const filterNumbers = arr.filter((value) => value == Number(value));
+        const format = NewPhone.split('');
+        const filterNumbers = format.filter((value) => value == Number(value));
 
         this._telefone = filterNumbers.join('')
     }
 
     get celular() {
-        return inputCell.value
+        const format = this._celular.split('');
+        format.unshift('(');
+        format.forEach((value, index) => {
+            if (index === 3) {
+                format.splice(index, 0, ') ')
+            }
+            if (index === 8) {
+                format.splice(index, 0, '-')
+            }
+        });
+
+        return format.join('')
     }
     set celular(newCell) {
-        const arr = newCell.split('');
-        const filterNumbers = arr.filter((value) => value == Number(value));
+        const format = newCell.split('');
+        const filterNumbers = format.filter((value) => value == Number(value));
 
         this._celular = filterNumbers.join('')
     }
 
     get pis() {
-        return inputPIS.value
+        return this._pis
     }
     set pis(newPIS) {
-        const arr = newPIS.split('');
-        const filterNUmbers = arr.filter((value) => value == Number(value));
+        const format = newPIS.split('');
+        const filterNUmbers = format.filter((value) => value == Number(value));
 
-        this._PIS = filterNUmbers.join('')
+        this._pis = filterNUmbers.join('')
     }
 
     get estuda() {
@@ -111,7 +156,7 @@ function createParagraph(element, text) {
 }
 
 function createUser() {
-    const valores = [inputName.value, inputCPF.value, inputPhone.value, inputCell.value, inputPIS.value, inputCheck.checked]
+    const valores = [inputName.value, inputDate.value, inputCPF.value, inputPhone.value, inputCell.value, inputPIS.value, inputCheck.checked]
     const user = new Usuario(...valores);
 
     return user
@@ -123,4 +168,13 @@ button.addEventListener('click', (event) => {
     const user = createUser();
     console.log(user)
     card(user)
+
+    inputName.value = ''
+    inputDate.value = ''
+    inputCPF.value = ''
+    inputPhone.value = ''
+    inputCell.value = ''
+    inputPIS.value = ''
+    inputCheck.value = ''
 });
+
