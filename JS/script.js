@@ -111,7 +111,16 @@ class Usuario {
     }
 
     get pis() {
-        return this._pis
+        const format = this._pis.split('');
+        format.forEach((value, index) => {
+            if (index === 3 || index === 8) {
+                format.splice(index, 0, '.')
+            }
+        });
+        const last = format.length - 1
+        format.splice(last, 0, '-')
+
+        return format.join('')
     }
     set pis(newPIS) {
         const format = newPIS.split('');
